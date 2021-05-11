@@ -8,6 +8,8 @@
 #include "Engine/Events/JoystickEvent.h"
 #include "Engine/Window/Window.h"
 
+#include <cstring>
+
 namespace gp1::input
 {
 	JoystickGamepadInput* JoystickHandler::s_Joysticks = nullptr;
@@ -34,8 +36,7 @@ namespace gp1::input
 			{
 				JoystickHandler::s_Joysticks[i].m_Connected = true;
 				JoystickHandler::s_Joysticks[i].m_IsGamepad = false;
-				const unsigned char* buttons                = glfwGetJoystickButtons(i, &JoystickHandler::s_Joysticks[i].m_NumButtons);
-				_CRT_UNUSED(buttons);
+				[[maybe_unused]] const unsigned char* buttons = glfwGetJoystickButtons(i, &JoystickHandler::s_Joysticks[i].m_NumButtons);
 				JoystickHandler::s_Joysticks[i].m_Buttons = new unsigned char[JoystickHandler::s_Joysticks[i].m_NumButtons];
 				memset(JoystickHandler::s_Joysticks[i].m_Buttons, 0, JoystickHandler::s_Joysticks[i].m_NumButtons);
 				JoystickHandler::s_Logger.LogDebug("Joystick connected");
@@ -149,8 +150,7 @@ namespace gp1::input
 			else if (glfwJoystickPresent(jid))
 			{
 				input.m_IsGamepad            = false;
-				const unsigned char* buttons = glfwGetJoystickButtons(jid, &input.m_NumButtons);
-				_CRT_UNUSED(buttons);
+				[[maybe_unused]] const unsigned char* buttons = glfwGetJoystickButtons(jid, &input.m_NumButtons);
 				input.m_Buttons = new unsigned char[input.m_NumButtons];
 				memset(input.m_Buttons, 0, input.m_NumButtons);
 				JoystickHandler::s_Logger.LogDebug("Joystick connected");

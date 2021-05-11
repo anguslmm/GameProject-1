@@ -5,6 +5,8 @@
 #include "Engine/Renderer/Apis/OpenGL/Texture/OpenGLTextureCubeMapData.h"
 #include "Engine/Renderer/Apis/OpenGL/Texture/OpenGLTextureCommon.h"
 
+#include <cstring>
+
 namespace gp1::renderer::apis::opengl::texture
 {
 	OpenGLTextureCubeMapData::OpenGLTextureCubeMapData(renderer::texture::TextureCubeMap* texture)

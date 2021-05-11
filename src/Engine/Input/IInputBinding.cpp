@@ -14,7 +14,7 @@ namespace gp1::input
 	{
 		if (inputGroup == nullptr)
 		{
-			throw std::exception("IInputBinding can't take a nullptr to an InputGroup!");
+			throw std::runtime_error("IInputBinding can't take a nullptr to an InputGroup!");
 		}
 
 		this->m_inputGroup = inputGroup;

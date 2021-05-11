@@ -47,4 +47,16 @@ return function()
 		{
 			"winmm"
 		}
+	filter 'system:linux'
+		systemversion "latest"
+
+		defines
+		{
+			"AL_BUILD_LIBRARY",
+			"AL_ALEXT_PROTOTYPES",
+			"_CRT_SECURE_NO_WARNINGS",
+			"NOMINMAX",
+			"CMAKE_INTDIR=\"Debug\"",
+			"OpenAL_EXPORTS"
+		}
 end

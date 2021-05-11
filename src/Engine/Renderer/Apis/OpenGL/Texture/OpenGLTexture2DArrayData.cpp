@@ -5,6 +5,8 @@
 #include "Engine/Renderer/Apis/OpenGL/Texture/OpenGLTexture2DArrayData.h"
 #include "Engine/Renderer/Apis/OpenGL/Texture/OpenGLTextureCommon.h"
 
+#include <cstring>
+
 namespace gp1::renderer::apis::opengl::texture
 {
 	OpenGLTexture2DArrayData::OpenGLTexture2DArrayData(renderer::texture::Texture2DArray* texture)

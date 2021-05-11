@@ -18,6 +18,7 @@
 #include <AL/alext.h>
 
 #include <filesystem>
+#include <cstring>
 
 #include "Engine/Audio/ALHelpers.h"
 #include "Engine/Audio/AudioCore.h"
@@ -34,7 +35,7 @@ namespace gp1::audio
 	{
 		unsigned int          Channels           = 0;
 		unsigned int          SampleRate         = 0;
-		uint64_t              TotalPCMFrameCount = 0;
+		unsigned long long    TotalPCMFrameCount = 0;
 		std::vector<uint16_t> PCMData;
 		uint64_t              GetTotalSamples()
 		{
@@ -83,7 +84,7 @@ namespace gp1::audio
 	AudioSource Audio::LoadAudioSourceFLAC(const std::string& filename)
 	{
 		ReadAudioData stereoData;
-		drflac_int16* pSampleData = drflac_open_file_and_read_pcm_frames_s16(filename.c_str(), &stereoData.Channels, &stereoData.SampleRate, &stereoData.TotalPCMFrameCount, nullptr);
+		drflac_int16* pSampleData = drflac_open_file_and_read_pcm_frames_s16(filename.c_str(), &stereoData.Channels, &stereoData.SampleRate, static_cast<long long unsigned int*>(&stereoData.TotalPCMFrameCount), nullptr);
 
 		if (pSampleData == NULL)
 			AudioCore::s_AudioLogger.LogError("Failed to load audio file!");
@@ -141,8 +142,7 @@ namespace gp1::audio
 	AudioSource Audio::LoadAudioSourceMP3(const std::string& filename)
 	{
 		mp3dec_file_info_t info;
-		int                loadResult = mp3dec_load(&s_Mp3d, filename.c_str(), &info, NULL, NULL);
-		_CRT_UNUSED(loadResult);
+		[[maybe_unused]] int loadResult = mp3dec_load(&s_Mp3d, filename.c_str(), &info, NULL, NULL);
 		uint32_t size = static_cast<uint32_t>(info.samples * sizeof(mp3d_sample_t));
 
 		auto sampleRate = info.hz;

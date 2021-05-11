@@ -90,7 +90,9 @@
 /* #undef HAVE_CPUID_H */
 
 /* Define if we have intrin.h */
+#ifdef WIN32
 #define HAVE_INTRIN_H
+#endif
 
 /* Define if we have guiddef.h */
 #define HAVE_GUIDDEF_H

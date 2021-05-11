@@ -7,7 +7,7 @@
 
 #define GLFW_INCLUDE_NONE
 #include "Engine/Utility/Logger.h"
-#include <glfw/glfw3.h>
+#include <GLFW/glfw3.h>
 #include <string>
 
 namespace gp1
@@ -75,7 +75,7 @@ namespace gp1
 			const WindowData& GetWindowData() const;
 
 			// Should this window close.
-			const bool IsCloseRequested() const;
+			bool IsCloseRequested() const;
 
 			friend renderer::Renderer;
 

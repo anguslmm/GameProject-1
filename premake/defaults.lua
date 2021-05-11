@@ -3,7 +3,7 @@ require 'customizations'
 
 cppdialect 'C++17'
 debugdir '../assets'
-exceptionhandling 'Off'
+exceptionhandling 'On'
 flags { 'MultiProcessorCompile' }
 includedirs { '../include/' }
 objdir '../obj'

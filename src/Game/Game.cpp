@@ -93,23 +93,20 @@ void Game::CloseMenuCallback(input::ButtonCallbackData data)
 	input::InputHandler::SetCurrentActiveInputGroup("onFoot");
 }
 
-void Game::PlayMP3Callback(input::ButtonCallbackData data)
+void Game::PlayMP3Callback([[maybe_unused]] input::ButtonCallbackData data)
 {
-	_CRT_UNUSED(data);
 	// Play the source
 	audio::Audio::Play(TestMP3);
 }
 
-void Game::PlayWAVCallback(input::ButtonCallbackData data)
+void Game::PlayWAVCallback([[maybe_unused]] input::ButtonCallbackData data)
 {
-	_CRT_UNUSED(data);
 	// Play the source
 	audio::Audio::Play(TestWAV);
 }
 
-void Game::PlayFLACCallback(input::ButtonCallbackData data)
+void Game::PlayFLACCallback([[maybe_unused]] input::ButtonCallbackData data)
 {
-	_CRT_UNUSED(data);
 	// Play the source
 	audio::Audio::Play(TestFLAC);
 }
